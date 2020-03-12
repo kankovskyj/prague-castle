@@ -268,7 +268,7 @@ house.copyGraph({
 //CATHEDRAL//CATHEDRAL
 var cathedral = new Zdog.Anchor({
     addTo: illo,
-    translate: { x: 1, y: 2, z: -15},
+    translate: { x: 3, y: -10, z: -20},
     rotate: { y: 1.56},
   });
   //LONG WALL LEFT POSITION
@@ -280,8 +280,8 @@ var cathedral = new Zdog.Anchor({
   new Zdog.Rect({
     addTo: firstGroup,
     width: 14,
-    height: 14,
-    color: '#000',
+    height: 40,
+    color: '#87786a',
   });
   
   // thirdWall
@@ -300,15 +300,15 @@ var cathedral = new Zdog.Anchor({
   new Zdog.Shape({
     addTo: secondGroup,
     path: [
-      { x: -5, y:  7 },
-      { x: -5, y: -7 },
-      { x:  0, y: -12 },
-      { x:  5, y: -7 },
-      { x:  5, y:  7 },
+      { x: -5, y:  20 },
+      { x: -5, y: -20 },
+      { x:  0, y: -30 },
+      { x:  5, y: -20 },
+      { x:  5, y:  20 },
     ],
     width: 10,
     height: 14,
-    color: '#9c8575',
+    color: '#A99685',
   });
   
   //side
@@ -323,17 +323,17 @@ var cathedral = new Zdog.Anchor({
   var firstRoof = new Zdog.Shape({
     addTo: cathedral,
     path: [
-      { x: -7, y:  -7, z: 5 },
-      { x: -7, y: -12, z: 0 },
-      { x:  7, y: -12, z: 0 },
-      { x:  7, y:  -7, z: 5 },
+      { x: -7, y:  -20, z: 5 },
+      { x: -7, y: -30, z: 0 },
+      { x:  7, y: -30, z: 0 },
+      { x:  7, y:  -20, z: 5 },
     ],
-    color: '#6f747a',
+    color: '#4e5155',
   });
   
   firstRoof.copy({
     scale: { z: -1 },
-    color: '#4e5155',
+    color: '#6f747a',
   });
   
   // floor
@@ -341,15 +341,35 @@ var cathedral = new Zdog.Anchor({
     addTo: cathedral,
     width: 14,
     height: 10,
-    translate: { y: 7 },
+    translate: { y: 20 },
     rotate: { x: TAU/4 },
     color: '#000',
   });
   
-    
+    //translate: { x: 3, y: -10, z: -15},
+    //rotate: { y: 1.56},
     
 //cathedral end
-
+cathedral.copyGraph({
+  translate: cathedral.translate.copy().multiply( -1 ),
+  translate: { y: -10, x: -10, z: -27},
+  rotate: { y: TAU/2},
+});
+cathedral.copyGraph({
+  translate: cathedral.translate.copy().multiply( -1 ),
+  translate: { x: 3, y: -10, z: -34},
+  rotate: { y: 1.56},
+});
+cathedral.copyGraph({
+  translate: cathedral.translate.copy().multiply( -1 ),
+  translate: { y: -10, x: 3.5, z: -27},
+  rotate: { y: TAU/2},
+});
+cathedral.copyGraph({
+  translate: cathedral.translate.copy().multiply( -1 ),
+  translate: { y: -10, x: 17, z: -27},
+  rotate: { y: TAU/2},
+});
 // ----- animate ----- //
 
 function animate() {
