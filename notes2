@@ -1,0 +1,80 @@
+var cathedral = new Zdog.Anchor({
+  addTo: illo,
+  translate: { x: -9, y: 9, z: 3 },
+});
+
+var firstGroup = new Zdog.Group({
+  addTo: house,
+  translate: { z: 5 },
+});
+// first wall
+new Zdog.Rect({
+  addTo: firstGroup,
+  width: 14,
+  height: 14,
+  color: '#CCBDA6',
+});
+
+// thirdWall
+var thirdGroup = firstGroup.copyGraph({
+  translate: { z: -5 },
+  rotate: { y: TAU/2 },
+});
+
+
+var secondGroup = new Zdog.Group({
+  addTo: house,
+  translate: { x: 7 },
+  rotate: { y: -TAU/4 },
+});
+// second wall SIDES
+new Zdog.Shape({
+  addTo: secondGroup,
+  path: [
+    { x: -5, y:  7 },
+    { x: -5, y: -7 },
+    { x:  0, y: -12 },
+    { x:  5, y: -7 },
+    { x:  5, y:  7 },
+  ],
+  width: 10,
+  height: 14,
+  color: '#9c8575',
+});
+
+//side
+var firstGroup = secondGroup.copyGraph({
+  translate: { x: -7 },
+  rotate: { y: TAU/4 },
+});
+
+
+
+// first roof
+var firstRoof = new Zdog.Shape({
+  addTo: house,
+  path: [
+    { x: -7, y:  -7, z: 5 },
+    { x: -7, y: -12, z: 0 },
+    { x:  7, y: -12, z: 0 },
+    { x:  7, y:  -7, z: 5 },
+  ],
+  color: '#6f747a',
+});
+
+firstRoof.copy({
+  scale: { z: -1 },
+  color: '#4e5155',
+});
+
+// floor
+new Zdog.Rect({
+  addTo: house,
+  width: 14,
+  height: 10,
+  translate: { y: 7 },
+  rotate: { x: TAU/4 },
+  color: '#000',
+});
+
+  
