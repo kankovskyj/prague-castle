@@ -26,7 +26,7 @@ var turnRatio = 1 / Math.sin( TAU/8 );
 var illo = new Zdog.Illustration({
   element: '.zdog-canvas',
   rotate: initRotate,
-  zoom: 8,
+  zoom: 3,
   // stretch looks circular at 1/8 turn
   scale: { x: turnRatio, z: turnRatio },
   dragRotate: true,
@@ -260,7 +260,18 @@ house.copyGraph({
 });
 house.copyGraph({
     translate: house.translate.copy().multiply( -1 ),
-    translate: { y: 2, x: -14, z: 8},
+    translate: { y: 2, x: -16, z: 8},
+  });
+  house.copyGraph({
+    translate: house.translate.copy().multiply( -1 ),
+    translate: { y: 2, x: 29, z: 5},
+    rotate: { y: 5.60},
+  });
+  house.copyGraph({
+    translate: house.translate.copy().multiply( -1 ),
+    translate: { y: 2, x: 35, z: 0.5},
+    rotate: { y: 5.60},
+
   });
 //BUILDING END
 
@@ -345,10 +356,6 @@ var cathedral = new Zdog.Anchor({
     rotate: { x: TAU/4 },
     color: '#000',
   });
-  
-    //translate: { x: 3, y: -10, z: -15},
-    //rotate: { y: 1.56},
-    
 //cathedral end
 cathedral.copyGraph({
   translate: cathedral.translate.copy().multiply( -1 ),
@@ -370,10 +377,112 @@ cathedral.copyGraph({
   translate: { y: -10, x: 17, z: -27},
   rotate: { y: TAU/2},
 });
+cathedral.copyGraph({
+  translate: cathedral.translate.copy().multiply( -1 ),
+  translate: { y: -10, x: -20, z: -27},
+  rotate: { y: TAU/2},
+});
+//tower
+let tower = new Zdog.Box({
+  translate: { y: -22.5, x: -6, z: -18},
+  addTo: illo,
+  width: 9,
+  height: 65,
+  depth: 9,
+  stroke: false,
+  color: '#C6AF91', // default face color
+  leftFace: '#87786a',
+  rightFace: '#9c8575',
+  stroke: 1,
+  topFace: '#6F747A',
+  bottomFace: '#000',
+});
+let towerTop = new Zdog.Cone({
+  translate: { y: -54, x: -6, z: -18},
+  rotate: { x: TAU/4 },
+  addTo: illo,
+  diameter: 9,
+  length: 15,
+  stroke: 4,
+  color: '#6F747A',
+  backface: '#6F747A',
+});
+
+//tower end
+//front
+let vezOne = new Zdog.Box({
+  translate: { y: -10, x: -26, z: -19.5},
+  addTo: illo,
+  width: 5,
+  height: 40,
+  depth: 5,
+  stroke: false,
+  color: '#4e5155', // default face color
+  leftFace: '#4e5155',
+  rightFace: '#4e5155',
+  topFace: '#4e5155',
+  bottomFace: '#4e5155',
+});
+vezOne.copyGraph({
+  translate: vezOne.translate.copy().multiply( -1 ),
+  translate: { y: -10, x: -26, z: -34.5},
+});
+
+let vezTwo = new Zdog.Box({
+  translate: { y: -42, x: -26, z: -19.5},
+  addTo: illo,
+  width: 4.2,
+  height: 25,
+  depth: 4.2,
+  stroke: false,
+  color: '#3e4144', // default face color
+  leftFace: '#3e4144',
+  rightFace: '#3e4144',
+  topFace: '#3e4144',
+  bottomFace: '#3e4144',
+});
+vezTwo.copyGraph({
+  translate: vezTwo.translate.copy().multiply( -1 ),
+  translate: { y: -42, x: -26, z: -34.5},
+});
+
+let tip = new Zdog.Cone({
+  translate: { y: -55, x: -26, z: -34.5},
+  rotate: { x: TAU/4 },
+  addTo: illo,
+  diameter: 3,
+  length: 12,
+  stroke: 1,
+  color: '#434649',
+  backface: '#434649',
+});
+tip.copyGraph({
+  translate: tip.translate.copy().multiply( -1 ),
+  translate: { y: -55, x: -26, z: -19.5},
+});
+
+//back
+let backOne = new Zdog.Box({
+  translate: { x: 26.5, y: 0.2, z: -27},
+  addTo: illo,
+  width: 8,
+  height: 19,
+  depth: 8,
+  stroke: 1,
+  color: '#4e5155', // default face color
+  leftFace: '#4e5155',
+  rightFace: '#4e5155',
+  topFace: '#6f747a',
+  bottomFace: '#000',
+  rotate: { y: 1.56},
+
+
+});
+
 // ----- animate ----- //
 
 function animate() {
-    illo.rotate.y += isSpinning ? 0.0003 : 0;
+    illo.rotate.y += isSpinning ? 0.003 : 0;
     illo.updateRenderGraph();
     requestAnimationFrame( animate );
   }
